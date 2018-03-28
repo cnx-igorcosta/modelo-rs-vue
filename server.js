@@ -14,9 +14,9 @@ server.use('/dist', express.static(path.join(__dirname, './dist')));
 server.use('/assets', express.static(path.join(__dirname, './src/assets')));
 
 //start server
-server.get('*', (req, res) => { 
-    
-  bundle.default({ url: req.url }).then((app) => {    
+server.get('*', (req, res) => {
+
+  bundle.default({ url: req.url }).then((app) => {
     //context to use as data source
     //in the template for interpolation
     const context = {
@@ -26,7 +26,7 @@ server.get('*', (req, res) => {
       `
     };
 
-    renderer.renderToString(app, /*context,*/ function (err, html) {   
+    renderer.renderToString(app, /*context,*/ function (err, html) {
       if (err) {
         if (err.code === 404) {
           res.status(404).end('Page not found')
@@ -36,10 +36,11 @@ server.get('*', (req, res) => {
       } else {
         res.end(html)
       }
-    });        
+    });
   }, (err) => {
     console.log(err);
-  });  
-});  
+  });
+});
 
-server.listen(5000);
+const port = process.env.PORT || 5000;
+server.listen(port);
