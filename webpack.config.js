@@ -1,8 +1,9 @@
 var path = require('path')
 var webpack = require('webpack')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/entry-client.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
@@ -75,4 +76,12 @@ if (process.env.NODE_ENV === 'production') {
       minimize: true
     })
   ])
+} else {
+  // module.exports.plugins = (module.exports.plugins || []).concat([
+  //   new HtmlWebpackPlugin(),
+  //   new HtmlWebpackPlugin({
+  //     filename: 'dist/index.html',
+  //     template: './index.dev.html'
+  //   }),
+  // ])
 }

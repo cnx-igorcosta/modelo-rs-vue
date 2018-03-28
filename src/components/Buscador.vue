@@ -2,7 +2,7 @@
   <div>
     <header id="header" class="alt">
         <span class="logo"><img src="../images/logo.svg" alt="" /></span>
-        <h1>Modelo RS</h1>
+        <h1>Google das RS</h1>
         <p>Digite uma palavra chave para encontrar o modelo de RS</p>
         <section>
             <form>
@@ -26,7 +26,7 @@
                         </a>
                         <a 
                             href="#principal" 
-                            class="button special" 
+                            class="button" 
                             @click="novoModelo">
                                 Novo
                         </a>    
