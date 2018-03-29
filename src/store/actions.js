@@ -40,7 +40,7 @@ function getMockModelos() {
     {_id:3, descricao: 'Inclusão de aplicação na plataforma IC', numero: 4667410},
     {_id:4, descricao: 'Criação de Context Root da aplicação', numero: 4677590},
     {_id:5, descricao: 'Grant em tabelas criadas', numero: 4698389},
-    {_id:5, descricao: 'Disponibilização de deploy automático no IC', numero: 4698389},
+    {_id:5, descricao: 'Disponibilização de deploy automático no IC', numero: 4699295},
     {_id:6, descricao: 'Criação de links na intranet', numero: 4705810},
     {_id:6, descricao: 'Habilitar log de produção no IC', numero: 4590765},
   ]
