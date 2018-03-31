@@ -16,52 +16,64 @@
                             <input 
                                 type="text" 
                                 :value="$store.state.modeloRs.numero" 
-                                :disabled="!$store.state.edicao" />
+                                :disabled="true" />
                         </div>
                         <div class="8u 12u$(xsmall)">
                             <label>Descrição</label>
                             <input 
                                 type="text" 
                                 :value="$store.state.modeloRs.descricao" 
-                                :disabled="!$store.state.edicao" />
+                                :disabled="true" />
                         </div>
-                        <!-- <div class="6u$ 12u$(xsmall)">
-                            <input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-                        </div>
-                        <div class="12u$">
-                            <div class="select-wrapper">
-                                <select name="demo-category" id="demo-category">
-                                    <option value="">- Category -</option>
-                                    <option value="1">Manufacturing</option>
-                                    <option value="1">Shipping</option>
-                                    <option value="1">Administration</option>
-                                    <option value="1">Human Resources</option>
-                                </select>
-                            </div>
+                        <div class="12u$ 12u$(xsmall)">
+                            <label>Grupo Designado</label>
+                            <input 
+                                type="text" 
+                                :value="$store.state.modeloRs.grupo"  
+                                :disabled="true"/>
                         </div>
                         <div class="4u 12u$(small)">
-                            <input type="radio" id="demo-priority-low" name="demo-priority" checked>
-                            <label for="demo-priority-low">Low</label>
+                            <input 
+                                type="radio" 
+                                name="ambiente"
+                                value="dsv"
+                                :checked="$store.state.modeloRs.ambiente === 'dsv'"
+                                :disabled="true">
+                            <label for="demo-priority-normal">Desenvolvimento</label>
                         </div>
                         <div class="4u 12u$(small)">
-                            <input type="radio" id="demo-priority-normal" name="demo-priority">
-                            <label for="demo-priority-normal">Normal</label>
+                            <input 
+                                type="radio" 
+                                name="ambiente"
+                                value="hml"
+                                :checked="$store.state.modeloRs.ambiente === 'hml'"
+                                :disabled="true">
+                            <label for="demo-priority-normal">Homologação</label>
                         </div>
                         <div class="4u$ 12u$(small)">
-                            <input type="radio" id="demo-priority-high" name="demo-priority">
-                            <label for="demo-priority-high">High</label>
+                             <input 
+                                type="radio" 
+                                name="ambiente"
+                                value="prd"
+                                :checked="$store.state.modeloRs.ambiente === 'prd'"
+                                :disabled="true">
+                            <label for="demo-priority-normal">Produção</label>
                         </div>
                         <div class="6u 12u$(small)">
-                            <input type="checkbox" id="demo-copy" name="demo-copy">
-                            <label for="demo-copy">Email me a copy</label>
-                        </div>
-                        <div class="6u$ 12u$(small)">
-                            <input type="checkbox" id="demo-human" name="demo-human" checked>
-                            <label for="demo-human">Not a robot</label>
+                            <input 
+                                type="checkbox" 
+                                name="de-acordo"
+                                :checked="$store.state.modeloRs.deAcordo"
+                                :disabled="true">
+                            <label for="demo-copy">Anexar De Acordo</label>
                         </div>
                         <div class="12u$">
-                            <textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-                        </div>-->
+                            <label>Observações</label>
+                            <textarea 
+                                rows="6"
+                                :value="$store.state.modeloRs.obs"
+                                :disabled="true"></textarea>
+                        </div>
                         <div class="12u$">
                             <ul class="actions">
                                 <li><input type="button" value="Editar" @click="editarModelo"/></li>

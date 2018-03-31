@@ -2,11 +2,13 @@ import axios from 'axios'
 import * as types from './mutation-types'
 
 export const buscarModelos = ({commit}) => {
-    // axios.get('')
-    // .then( response => response.resultados)
-    // .then( resultados => commit(types.BUSCAR_MODELOS, resultados))
-    // .catch( response => console.log(response))
-    commit(types.BUSCAR_MODELOS, getMockModelos())
+    console.log('aqui')
+    axios.get('https://google-rs-api.herokuapp.com/modeloRs')
+    //axios.get('localhost:3000/modeloRs')
+        .then( response => { console.log(response); return response.resultados })
+        .then( resultados => commit(types.BUSCAR_MODELOS, []))
+        .catch( response => console.log(response))
+    //commit(types.BUSCAR_MODELOS, getMockModelos())
 }
 
 export const detalharModelo = ({commit}, modeloRs) => {
@@ -35,7 +37,7 @@ export const novoModelo = ({commit}) => {
 
 function getMockModelos() {
   return [
-    {_id:1, descricao: 'Criação de usuários na ferramenta BSRA', numero: 4651979},
+    {_id:1, descricao: 'Criação de usuários na ferramenta BSRA', numero: 4651979, grupo: 'BRADESCO SEGUROS - ARQUITETURA FERRAMENTAS - BSRA', ambiente: 'dsv', deAcordo: false, obs: 'Necessário o prévio cadastramento da aplicação no BSRA'},
     {_id:2, descricao: 'Validação do BSRA da aplicação', numero: 4652693},
     {_id:3, descricao: 'Inclusão de aplicação na plataforma IC', numero: 4667410},
     {_id:4, descricao: 'Criação de Context Root da aplicação', numero: 4677590},
