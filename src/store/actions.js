@@ -3,7 +3,7 @@ import * as types from './mutation-types'
 
 export const buscarModelos = ({commit},textoBusca) => {
     //axios.post('http://localhost:3000/searchModelos',{ 
-    axios.post('https://google-rs-api/searchModelos',{     
+    axios.post('https://google-rs-api.herokuapp.com/searchModelos',{     
         headers: { 'crossDomain': true },
         data: {busca: textoBusca}
     })
