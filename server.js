@@ -2,6 +2,7 @@ const express = require('express');
 const server = express();
 const fs = require('fs');
 const path = require('path');
+const cors = require('cors')
 //obtain bundle
 const bundle =  require('./dist/server.bundle.js');
 //get renderer from vue server renderer
@@ -10,6 +11,7 @@ const renderer = require('vue-server-renderer').createRenderer({
   template: fs.readFileSync('./index.html', 'utf-8')
 });
 
+server.use(cors());
 server.use('/dist', express.static(path.join(__dirname, './dist')));
 server.use('/assets', express.static(path.join(__dirname, './src/assets')));
 

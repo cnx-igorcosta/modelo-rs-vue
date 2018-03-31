@@ -21,7 +21,7 @@
                         <a 
                             href="#principal" 
                             class="button special" 
-                            @click="buscarModelos">
+                            @click="buscarModelos(textoBusca)">
                                 Buscar
                         </a>
                         <a 

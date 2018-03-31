@@ -1,12 +1,14 @@
 import axios from 'axios'
 import * as types from './mutation-types'
 
-export const buscarModelos = ({commit}) => {
-    console.log('aqui')
-    axios.get('https://google-rs-api.herokuapp.com/modeloRs')
-    //axios.get('localhost:3000/modeloRs')
-        .then( response => { console.log(response); return response.resultados })
-        .then( resultados => commit(types.BUSCAR_MODELOS, []))
+export const buscarModelos = ({commit},textoBusca) => {
+    //axios.post('http://localhost:3000/searchModelos',{ 
+    axios.post('https://google-rs-api/searchModelos',{     
+        headers: { 'crossDomain': true },
+        data: {busca: textoBusca}
+    })
+        .then( response =>  response.data )
+        .then( data => commit(types.BUSCAR_MODELOS, data))
         .catch( response => console.log(response))
     //commit(types.BUSCAR_MODELOS, getMockModelos())
 }
