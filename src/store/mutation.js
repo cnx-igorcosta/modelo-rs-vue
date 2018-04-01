@@ -4,12 +4,18 @@ function limpar(state) {
     state.modeloRs = {}
     state.resultados = []
     state.mensagem = ''
+    state.edicao = false
 }
 
 export const mutations = {
-    [types.BUSCAR_MODELOS] (state, resultados) {
+    [types.BUSCAR_MODELOS] (state, {resultados, textoBusca}) {
         limpar(state)
-        state.resultados.push(...resultados)
+        state.textoBusca = textoBusca
+        if(resultados.length) {
+            state.resultados.push(...resultados)
+        } else {
+            state.mensagem = 'Não foram encontrados resultados para sua busca'
+        }
     },
     
     [types.DETALHAR_MODELO] (state, modeloRs) {
@@ -25,6 +31,11 @@ export const mutations = {
     [types.SALVAR_MODELO] (state, modeloRs) {
         state.modeloRs = modeloRs
         state.mensagem = `RS número ${modeloRs.numero} salva com sucesso!`
+    },
+
+    [types.ATUALIZAR_MODELO] (state, modeloRS) {
+        state.modeloRs = modeloRS
+        state.mensagem = `RS número ${state.modeloRs.numero} atualizada com sucesso!`
     },
 
     [types.EXCLUIR_MODELO] (state, idModelo) {

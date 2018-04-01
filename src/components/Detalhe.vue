@@ -32,6 +32,9 @@
                                 :value="$store.state.modeloRs.grupo"  
                                 :disabled="true"/>
                         </div>
+                        <div class="12u 12u$(small)">
+                            <label>Ambiente</label>
+                        </div>
                         <div class="4u 12u$(small)">
                             <input 
                                 type="radio" 
@@ -71,14 +74,14 @@
                             <label>Observações</label>
                             <textarea 
                                 rows="6"
-                                :value="$store.state.modeloRs.obs"
+                                :value="$store.state.modeloRs.observacao"
                                 :disabled="true"></textarea>
                         </div>
                         <div class="12u$">
                             <ul class="actions">
                                 <li><input type="button" value="Editar" @click="editarModelo"/></li>
                                 <li><input type="button" value="Excluir" @click="excluirModelo($store.state.modeloRs._id)"/></li>
-                                <li><input type="button" class="special" value="Voltar" @click="limparModelo"/></li>
+                                <li><a href="#principal" class="button special" @click="limparModelo">Voltar</a></li>
                             </ul>
                         </div> 
                     </div>
@@ -96,7 +99,7 @@
             ...mapActions([
                 'limparModelo',
                 'editarModelo',
-                'excluirModelo'
+                'excluirModelo',
                 ]),
             salvarModelo() {
 

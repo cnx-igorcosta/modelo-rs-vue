@@ -10,7 +10,8 @@ const state = {
     resultados: [],
     modeloRs: {},
     edicao: false,
-    mensagem: ''
+    mensagem: '',
+    textoBusca: ''
 }
 
 export default new Vuex.Store({

@@ -15,13 +15,12 @@
                             type="text" 
                             placeholder="Modelo de RS" 
                             v-model="textoBusca" 
-                            @keydown.enter.prevent="buscarModelos"/>
+                            @keydown.enter.prevent="search"/>
                     </div>
                     <div class="5u 12u$(xsmall)">
                         <a 
-                            href="#principal" 
                             class="button special" 
-                            @click="buscarModelos(textoBusca)">
+                            @click="search()">
                                 Buscar
                         </a>
                         <a 
@@ -45,9 +44,16 @@
                 textoBusca: ''
             }
         },
-        methods: mapActions([
+        methods: {
+            ...mapActions([
             'buscarModelos',
             'novoModelo'
-        ])
+            ]),
+            search() {
+                if(this.textoBusca) {
+                    this.buscarModelos(this.textoBusca)
+                }
+            }
+        },
     }
 </script>
