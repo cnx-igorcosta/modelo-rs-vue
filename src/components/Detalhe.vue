@@ -80,7 +80,7 @@
                         <div class="12u$">
                             <ul class="actions">
                                 <li><input type="button" value="Editar" @click="editarModelo"/></li>
-                                <li><input type="button" value="Excluir" @click="excluirModelo($store.state.modeloRs._id)"/></li>
+                                <!-- <li><input type="button" value="Excluir" @click="excluirModelo($store.state.modeloRs._id)"/></li> -->
                                 <li><a href="#principal" class="button special" @click="limparModelo">Voltar</a></li>
                             </ul>
                         </div> 

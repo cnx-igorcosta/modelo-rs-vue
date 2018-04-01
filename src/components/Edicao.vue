@@ -37,32 +37,36 @@
                             <input 
                                 type="radio" 
                                 name="ambiente"
+                                id="dsv"
                                 value="dsv"
                                 v-model="modeloRs.ambiente" />
-                            <label for="demo-priority-normal">Desenvolvimento</label>
+                            <label for="dsv">Desenvolvimento</label>
                         </div>
                         <div class="4u 12u$(small)">
                             <input 
                                 type="radio" 
                                 name="ambiente"
+                                id="hml"
                                 value="hml"
-                                v-model="modeloRs.ambiente">
-                            <label for="demo-priority-normal">Homologação</label>
+                                v-model="modeloRs.ambiente" />
+                            <label for="hml">Homologação</label>
                         </div>
                         <div class="4u$ 12u$(small)">
                              <input 
                                 type="radio" 
                                 name="ambiente"
+                                id="prd"
                                 value="prd"
                                 v-model="modeloRs.ambiente" />
-                            <label for="demo-priority-normal">Produção</label>
+                            <label for="prd">Produção</label>
                         </div>
                         <div class="6u 12u$(small)">
                             <input 
                                 type="checkbox" 
                                 name="de-acordo"
+                                id="de-acordo"
                                 v-model="modeloRs.deAcordo" />
-                            <label for="demo-copy">Anexar De Acordo</label>
+                            <label for="de-acordo">Anexar De Acordo</label>
                         </div>
                         <div class="12u$">
                             <label>Observações</label>
@@ -73,7 +77,7 @@
                         <div class="12u$">
                             <ul class="actions">
                                 <li><a href="#titulo-edicao" class="button special" @click="salvar">Salvar</a></li>
-                                <li><a href="#principal" class="button" @click="buscarModelos($store.state.textoBusca)">Voltar</a></li>
+                                <li><a href="#principal" class="button" @click="voltar">Voltar</a></li>
                             </ul>
                         </div> 
                     </div>
@@ -104,11 +108,23 @@
             ...mapGetters([
                 'getModeloRs'
             ]),
+            validar() {
+                return ( this.modeloRs.numero && this.modeloRs.descricao)
+            },
             salvar() {
-                if(this.modeloRs._id) {
-                    this.atualizarModelo(this.modeloRs)
+                if(this.validar()) {
+                    if(this.modeloRs._id) {
+                        this.atualizarModelo(this.modeloRs)
+                    } else {
+                        this.salvarModelo(this.modeloRs)
+                    }
+                }
+            },
+            voltar() {
+                if(this.$store.state.textoBusca) {
+                    this.buscarModelos(this.$store.state.textoBusca)
                 } else {
-                    this.salvarModelo(this.modeloRs)
+                    this.limparModelo()
                 }
             }
         },
