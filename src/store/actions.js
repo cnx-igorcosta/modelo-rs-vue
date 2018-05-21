@@ -5,8 +5,8 @@ import * as types from './mutation-types'
 const urlApi = 'https://google-rs-api.herokuapp.com'
 
 export const buscarModelos = ({commit}, textoBusca) => {
-    const url = `${urlApi}/searchModelos` 
-    const headers = { 'crossDomain': true }
+    const url = `${urlApi}/searchModelos`
+    const headers = { 'crossDomain': true, 'Access-Control-Allow-Origin': true }
     const data = { busca: textoBusca }
     axios.post(url, { headers, data })
         .then( response =>  response.data )
@@ -27,13 +27,13 @@ export const salvarModelo = ({commit}, modeloRs) => {
     const headers = { 'Content-Type':'application/json' }
     const data = modeloRs
     axios.post(url, { headers, data })
-        .then( response =>  { 
-            if(response.data.erro) { Promise.reject(response) } 
+        .then( response =>  {
+            if(response.data.erro) { Promise.reject(response) }
             else{ return response.data.modeloRs }
         })
         .then( modeloRS => commit(types.SALVAR_MODELO, modeloRs) )
         .catch( response => console.log(response) )
-    
+
 }
 
 export const atualizarModelo = ({commit}, modeloRs) => {
@@ -41,8 +41,8 @@ export const atualizarModelo = ({commit}, modeloRs) => {
     const headers = { 'Content-Type':'application/json' }
     const data = modeloRs
     axios.put(url, { headers, data })
-        .then( response =>  { 
-            if(response.data.erro) { Promise.reject(response) } 
+        .then( response =>  {
+            if(response.data.erro) { Promise.reject(response) }
             else{ return response.data.modeloRs }
         })
         .then( modeloRS => commit(types.ATUALIZAR_MODELO, modeloRS) )
