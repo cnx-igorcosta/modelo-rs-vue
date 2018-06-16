@@ -8,7 +8,7 @@
                 <Edicao />
             </div>
             <footer id="footer">
-                <p class="copyright">&copy; Developed by: <a target="blank" href="https://github.com/igorgcosta">Igor Costa</a>.</p>
+                <p class="copyright">&copy;Template by: <a target="blank" href="https://html5up.net/">HTML5 UP</a>. Developed by: <a target="blank" href="https://github.com/igorgcosta">Igor Costa</a>.</p>
             </footer>
         </div>
     </div>
