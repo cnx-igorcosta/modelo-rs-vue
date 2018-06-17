@@ -2,7 +2,7 @@
 Aplicação Vue para consulta de modelos de RS e Tarefas.
 
 ## Dependênicas
-Node.js e MongoDb
+Rodar a api [modelo-rs-api](https://github.com/igorgcosta/modelo-rs-api)
 
 ## Instalação
 Após clone, executar:
