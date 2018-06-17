@@ -30,12 +30,12 @@ export const mutations = {
 
     [types.SALVAR_MODELO] (state, modeloRs) {
         state.modeloRs = modeloRs
-        state.mensagem = `RS número ${modeloRs.numero} salva com sucesso!`
+        state.mensagem = `Salva com sucesso!`
     },
 
     [types.ATUALIZAR_MODELO] (state, modeloRS) {
         state.modeloRs = modeloRS
-        state.mensagem = `RS número ${state.modeloRs.numero} atualizada com sucesso!`
+        state.mensagem = `Atualizada com sucesso!`
     },
 
     [types.EXCLUIR_MODELO] (state, idModelo) {

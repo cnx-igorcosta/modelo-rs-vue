@@ -11,7 +11,8 @@
                             <thead>
                                 <tr>
                                     <th>Descrição</th>
-                                    <th>Número da RS</th>
+                                    <th>Número</th>
+                                    <th>Ambiente</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
@@ -20,7 +21,8 @@
                                     v-for="(res, index) in $store.state.resultados"
                                     :key="index">
                                     <td>{{res.descricao}}</td>
-                                    <td>{{res.numero}}</td>
+                                    <td>{{res.tipo === 'Tarefa' ? 'TRF ' : 'RS '}}{{res.numero}}</td>
+                                    <td>{{res.ambiente}}</td>
                                     <td>
                                         <a 
                                             href="#main" 

@@ -4,7 +4,7 @@
             <div class="spotlight">
                 <div class="content">
                     <header class="major">
-                        <h2>Detalhes da RS {{$store.state.modeloRs.numero}}</h2>
+                        <h2>Detalhes da {{$store.state.modeloRs.tipo}} {{$store.state.modeloRs.numero}}</h2>
                     </header>
                     <form>
                     <div class="row uniform">
@@ -32,10 +32,17 @@
                                 :value="$store.state.modeloRs.grupo"  
                                 :disabled="true"/>
                         </div>
+                        <div class="4u 12u$(xsmall)" v-if="isTarefa()">
+                            <label>Número da RDM</label>
+                            <input 
+                                type="text" 
+                                v-model="$store.state.modeloRs.numeroRdm"
+                                :disabled="true"/>
+                        </div>
                         <div class="12u 12u$(small)">
                             <label>Ambiente</label>
                         </div>
-                        <div class="4u 12u$(small)">
+                        <div class="4u 12u$(small)" v-if="!isTarefa()">
                             <input 
                                 type="radio" 
                                 name="ambiente"
@@ -62,13 +69,21 @@
                                 :disabled="true">
                             <label for="demo-priority-normal">Produção</label>
                         </div>
-                        <div class="6u 12u$(small)">
+                        <div class="6u 12u$(small)" v-if="!isTarefa()">
                             <input 
                                 type="checkbox" 
                                 name="de-acordo"
                                 :checked="$store.state.modeloRs.deAcordo"
                                 :disabled="true">
-                            <label for="demo-copy">Anexar De Acordo</label>
+                            <label for="demo-copy">Precisa anexar De Acordo?</label>
+                        </div>
+                        <div class="6u 12u$(small)" v-if="isTarefa()">
+                            <input 
+                                type="checkbox" 
+                                name="precisa-rs"
+                                :checked="$store.state.modeloRs.precisaRs"
+                                :disabled="true">
+                            <label for="demo-copy">Precisa criar RS para execução da tarefa?</label>
                         </div>
                         <div class="12u$">
                             <label>Observações</label>
@@ -101,8 +116,8 @@
                 'editarModelo',
                 'excluirModelo',
                 ]),
-            salvarModelo() {
-
+            isTarefa() {
+                return this.$store.state.modeloRs.tipo === 'Tarefa'
             }
         }
     }

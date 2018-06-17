@@ -3,7 +3,7 @@
     <header id="header" class="alt">
         <span class="logo"><img src="../images/logo.svg" alt="" /></span>
         <h1>Google das RS</h1>
-        <p>Digite uma palavra chave para encontrar o modelo de RS</p>
+        <p>Digite uma palavra chave para encontrar o modelo de RS ou Tarefa de RDM</p>
         <section>
             <form>
                 <div class="row uniform">
@@ -13,7 +13,7 @@
                     <div class="7u 12u$(xsmall)">
                         <input 
                             type="text" 
-                            placeholder="Modelo de RS" 
+                            placeholder="Modelo de RS/Tarefa" 
                             v-model="textoBusca" 
                             @keydown.enter.prevent="search"/>
                     </div>

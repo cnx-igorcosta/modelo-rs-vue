@@ -4,14 +4,35 @@
             <div class="spotlight">
                 <div class="content">
                     <header class="major" id="titulo-edicao">
-                        <h2 v-if="modeloRs._id">Edição de Modelo de RS</h2>
-                        <h2 v-else>Novo de Modelo de RS</h2>
+                        <h2 v-if="modeloRs._id">Edição de Modelo de {{modeloRs.tipo}}</h2>
+                        <h2 v-else>Novo de Modelo de {{modeloRs.tipo}}</h2>
                     </header>
                     <form>
                     <div class="row uniform">
                         <div class="12u 12u$(xsmall)" v-show="$store.state.mensagem.length">
                             {{$store.state.mensagem}}
                         </div>
+                        <div class="12u 12u$(small)" v-if="!modeloRs._id">
+                            <label>Tipo</label>
+                        </div>
+                        <div class="6u 12u$(small)" v-if="!modeloRs._id">
+                            <input 
+                                type="radio" 
+                                name="tipo"
+                                id="rs"
+                                value="RS"
+                                v-model="modeloRs.tipo" />
+                            <label for="rs">RS</label>
+                        </div>
+                        <div class="6u 12u$(small)" v-if="!modeloRs._id">
+                            <input 
+                                type="radio" 
+                                name="tipo"
+                                id="tarefa"
+                                value="Tarefa"
+                                v-model="modeloRs.tipo" />
+                            <label for="tarefa">Tarefa</label>
+                        </div> 
                         <div class="4u 12u$(xsmall)">
                             <label>Número</label>
                             <input 
@@ -30,10 +51,16 @@
                                 type="text" 
                                 v-model="modeloRs.grupo" />
                         </div>
+                        <div class="4u 12u$(xsmall)" v-if="isTarefa()">
+                            <label>Número da RDM</label>
+                            <input 
+                                type="text" 
+                                v-model="modeloRs.numeroRdm"/>
+                        </div>
                         <div class="12u 12u$(small)">
                             <label>Ambiente</label>
                         </div>
-                        <div class="4u 12u$(small)">
+                        <div class="4u 12u$(small)" v-if="!isTarefa()">
                             <input 
                                 type="radio" 
                                 name="ambiente"
@@ -60,13 +87,21 @@
                                 v-model="modeloRs.ambiente" />
                             <label for="prd">Produção</label>
                         </div>
-                        <div class="6u 12u$(small)">
+                        <div class="6u 12u$(small)" v-if="!isTarefa()">
                             <input 
                                 type="checkbox" 
                                 name="de-acordo"
                                 id="de-acordo"
                                 v-model="modeloRs.deAcordo" />
-                            <label for="de-acordo">Anexar De Acordo</label>
+                            <label for="de-acordo">Precisa anexar De Acordo?</label>
+                        </div>
+                        <div class="6u 12u$(small)" v-if="isTarefa()">
+                            <input 
+                                type="checkbox"
+                                name="precisa-rs" 
+                                id="precisa-rs"
+                                v-model="modeloRs.precisaRs" />
+                            <label for="precisa-rs">Precisa criar RS para execução da tarefa?</label>
                         </div>
                         <div class="12u$">
                             <label>Observações</label>
@@ -95,7 +130,7 @@
         props: ['busca'],
         data() {
             return {
-                modeloRs: {}
+                modeloRs: {},
             }
         },
         methods: {
@@ -108,6 +143,9 @@
             ...mapGetters([
                 'getModeloRs'
             ]),
+            isTarefa() {
+                return this.modeloRs.tipo === 'Tarefa'
+            },
             validar() {
                 return ( this.modeloRs.numero && this.modeloRs.descricao)
             },
