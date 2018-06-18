@@ -6,7 +6,7 @@ const urlApi = 'https://google-rs-api.herokuapp.com'
 
 export const buscarModelos = ({commit}, textoBusca) => {
     const url = `${urlApi}/searchModelos`
-    const headers = { 'Access-Control-Allow-Origin': '*' }
+    const headers = { 'crossDomain': true, 'Access-Control-Allow-Origin': '*' }
     const data = { busca: textoBusca }
     axios.post(url, { headers, data })
         .then( response =>  response.data )
