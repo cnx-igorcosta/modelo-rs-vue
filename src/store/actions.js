@@ -24,7 +24,7 @@ export const editarModelo = ({commit}) => {
 
 export const salvarModelo = ({commit}, modeloRs) => {
     const url = `${urlApi}/modeloRs/`
-    const headers = { 'Content-Type':'application/json' }
+    const headers = { 'crossDomain': true, 'Access-Control-Allow-Origin': '*', 'Content-Type':'application/json' }
     const data = modeloRs
     axios.post(url, { headers, data })
         .then( response =>  {
@@ -38,7 +38,7 @@ export const salvarModelo = ({commit}, modeloRs) => {
 
 export const atualizarModelo = ({commit}, modeloRs) => {
     const url = `${urlApi}/modeloRs/${modeloRs._id}`
-    const headers = { 'Content-Type':'application/json' }
+    const headers = { 'crossDomain': true, 'Access-Control-Allow-Origin': '*', 'Content-Type':'application/json' }
     const data = modeloRs
     axios.put(url, { headers, data })
         .then( response =>  {
